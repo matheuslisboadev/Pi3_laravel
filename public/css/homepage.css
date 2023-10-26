@@ -1,8 +1,12 @@
-body{
-    background-color: #472468;
-    height: 1000px;
 
+body {
+    background-color: #472468;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
+
 nav {
     background-color: #ffbd59;
     height: 80px;
@@ -10,14 +14,15 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 10px 0;
+    margin: 0;
 }
 
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    display: flex; 
+    display: flex;
 }
 
 li {
@@ -44,7 +49,7 @@ li a:hover:not(.active) {
     background-color: #000000;
 }
 
- img {
+img {
     height: 100px;
     width: 100px;
 }
@@ -76,7 +81,7 @@ li a:hover:not(.active) {
 
 .card-container {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     justify-content: space-around;
     padding: 20px;
     margin-top: 20px;
@@ -118,14 +123,67 @@ li a:hover:not(.active) {
     background-color: #fca714;
 }
 
-.card:nth-child(1) {
-    background-color: #ffbd59;
-}
-
-.card:nth-child(2) {
-    background-color: #ffbd59;
-}
-
+.card:nth-child(1),
+.card:nth-child(2),
 .card:nth-child(3) {
     background-color: #ffbd59;
 }
+
+.container {
+    display: flex;
+    flex: 1;
+}
+.sidebar {
+    width: 150px;
+    background-color: #ffbd59;
+    color: #ffffff;
+    padding: 20px;
+    margin-right: 20px;
+    border-radius: 4px;
+    margin: 15px 0;
+    margin-left: 5px;
+}
+
+.nav {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.nav li {
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+    display: block;
+}
+
+.nav a:hover {
+    color: #66c0f4;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+footer {
+    background-color: #ffbd59;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.card-principal {
+    flex: 1;
+    height: 300px;
+    background-color: #ffbd59;
+    border-radius: 10px;
+}
+

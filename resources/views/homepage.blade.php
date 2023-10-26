@@ -1,36 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="css/homepage.css">
-@include('layouts.nav')
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/homepage.css">
+    @include('layouts.nav')
 </head>
 <body>
-    @yield('nav')  
-    
- <div class="content">
+    @yield('nav') 
+
+    <div class="container">
+        @include('layouts.sidebar')
+        @yield('side')
+
+        <div class="content">
+            <div class="card-principal">
+                <h1>Jogo em destaque</h1>
+            </div>
+
             <div class="card-container">
                 <div class="card">
                     <h2>Card 1</h2>
-                    <p>This is the content of Card 1.</p>
-                    <p>Description of Card 1.</p>
-                    <a href="#" class="btn">Learn More</a>
+                    <p></p>
+                    <p></p>
+                    <a href="#" class="btn">ok</a>
                 </div>
 
                 <div class="card">
                     <h2>Card 2</h2>
-                    <p>This is the content of Card 2.</p>
-                    <p>Description of Card 2.</p>
-                    <a href="#" class="btn">Learn More</a>
+                    <p></p>
+                    <p></p>
+                    <a href="#" class="btn">ok</a>
                 </div>
 
                 <div class="card">
                     <h2>Card 3</h2>
-                    <p>This is the content of Card 3.</p>
-                    <p>Description of Card 3.</p>
-                    <a href="#" class="btn">Learn More</a>
+                    <p></p>
+                    <p></p>
+                    <a href="#" class="btn">ok</a>
                 </div>
             </div>
         </div>
     </div>
-    </body>
-    </html>
+
+    <footer>
+        Alpha, 2023 &copy; Copyright
+    </footer>
+</body>
+</html>

@@ -1,0 +1,68 @@
+body{
+    background-color: #472468;
+}
+
+img {
+    height: 200px;
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+.login {
+    font-size: 32px;
+    text-align: center;
+}
+
+.form {
+    height: 380px;
+    width: 300px;
+    border-radius: 5%;
+    background-color: #ffbd59;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+button {
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.lembrar {
+    display: flex;
+    align-items: center;
+    margin-top: 5px; 
+    margin-bottom: 10px;
+}
+
+.lembrar label {
+    margin-right: 5px;
+    white-space: nowrap; 
+}
+
+.cadastro{
+    margin-top: 10px;
+}
+
+
+
+

@@ -6,28 +6,34 @@
     <title>Produto</title>
     <link rel="stylesheet" href="css/produto.css">
     @include('layouts.nav')
+
 </head>
 <body>
-  @yield('nav')
+    @yield('nav')
+        <div class="content">
+            <div class="card_principal">
+                <h1>Imagem do jogo</h1>
+            </div>
 
-    <div class="card_principal">
-        <h1>Imagem do jogo</h1>
-</div>
-<div class="descricao">
-  <h1>Descrição do jogo</h1>
-</div>
-    <div class="card-container">
-        <div class="row">
-            <div class="cards">imagens</div>
-            <div class="cards">imagens</div>
-            <div class="cards">imagens</div>
+            <div class="descricao">
+                <h1>Descrição do jogo</h1>
+            </div>
         </div>
-        <div class="row">
-            <div class="cards">imagens</div>
-            <div class="cards">imagens</div>
-            <div class="cards">imagens</div>
+        <div class="card-container">
+            <div class="row">
+                <div class="cards">imagens</div>
+                <div class="cards">imagens</div>
+                <div class="cards">imagens</div>
+            </div>
+            <div class="row">
+                <div class="cards">imagens</div>
+                <div class="cards">imagens</div>
+                <div class="cards">imagens</div>
+            </div>
         </div>
-    </div>
-    
+        <footer>
+        Alpha, 2023 &copy; Copyright
+    </footer>
 </body>
+
 </html>

@@ -26,3 +26,7 @@ Route::get('/produto', function () {
 Route::get('/login', function () {
     return view('login');
 });
+
+Route::get('/perfil', function () {
+    return view('perfil');
+});

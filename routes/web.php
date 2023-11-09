@@ -30,3 +30,7 @@ Route::get('/login', function () {
 Route::get('/perfil', function () {
     return view('perfil');
 });
+
+Route::get('/listagem', function () {
+    return view('listagem');
+});

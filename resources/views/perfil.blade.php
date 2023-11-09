@@ -48,6 +48,15 @@
         <label for="cep">CEP:</label>
         <input type="text" id="cep" name="cep">
 
+        <label for="cep">CIdade:</label>
+        <input type="text" id="cep" name="cep">
+
+        <label for="cep">Estado:</label>
+        <input type="text" id="cep" name="cep">
+
+        <label for="cep">Complemento:</label>
+        <input type="text" id="cep" name="cep">
+
         <button type="button" class="fechar" onclick="fecharModal()">Fechar</button>
         <button type="button" class="confirmar" onclick="confirmarAlteracoes()">Confirmar Alterações</button>
     </div>
@@ -58,9 +67,6 @@
 
         <label for="novoEmail">Novo Email:</label>
         <input type="text" id="novoEmail" name="novoEmail">
-
-        <label for="novoCPF">Novo CPF:</label>
-        <input type="text" id="novoCPF" name="novoCPF">
 
         <button type="button" class="confirmar" onclick="confirmarEdicaoDados()">Confirmar Alterações</button>
         <button type="button" class="fechar" onclick="fecharModalEditarDados()">Fechar</button>

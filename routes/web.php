@@ -5,6 +5,7 @@ use App\Http\Controllers\CadastroController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\CarrinhoController;
 
 
 Route::get('/', function () {
@@ -30,3 +31,8 @@ Route::get('/login', function () {
 Route::get('/perfil', function () {
     return view('perfil');
 });
+
+Route::get('/carrinho', function () {
+    return view('carrinho');
+});
+

@@ -2,64 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Carrinho;
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class CarrinhoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public function mostrarCarrinho()
     {
-        //
+        $carrinhoIds = session('carrinho', []); 
+
+        // Aqui você deve buscar os detalhes completos dos produtos usando os IDs
+        $produtos = Produto::whereIn('PRODUTO_ID', array_keys($carrinhoIds))->get();
+
+        // Agora, você pode combinar as informações do produto com as quantidades
+        $carrinho = [];
+        foreach ($produtos as $produto) {
+            $carrinho[] = [
+                'produto' => $produto,
+                'quantidade' => $carrinhoIds[$produto->PRODUTO_ID],
+            ];
+        }
+
+        return view('carrinho')->with('carrinho', $carrinho);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function adicionarProduto(Request $request)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Carrinho $carrinho)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Carrinho $carrinho)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Carrinho $carrinho)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Carrinho $carrinho)
-    {
-        //
+        $produtoId = $request->input('product_id');
+        $quantidade = $request->input('quantidade', 1);
+    
+        $carrinho = $request->session()->get('carrinho', []);
+        $carrinho[$produtoId] = $quantidade;
+        $request->session()->put('carrinho', $carrinho);
+    
+        return redirect('/carrinho');
     }
 }

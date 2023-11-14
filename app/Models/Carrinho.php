@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Carrinho extends Model
 {
-    use HasFactory;
+
+    protected $fillable = ['USUARIO_ID', 'PRODUTO_ID', 'ITEM_QTD'];
+
+    public function produtos()
+    {
+        return $this->belongsToMany(Produto::class)->withPivot('ITEM_QTD');
+    }
 }

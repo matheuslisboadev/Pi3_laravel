@@ -32,10 +32,12 @@ Route::get('/perfil', function () {
     return view('perfil');
 });
 
-Route::get('/listagem', function () {
-    return view('listagem');
-});
 Route::get('/carrinho', function () {
     return view('carrinho');
 });
+
+Route::get('/listagem', [ProdutoController::class, 'index']);
+Route::post('/adicionar-produto', [CarrinhoController::class, 'adicionarProduto'])->name('adicionar_produto');
+Route::get('/carrinho', 'App\Http\Controllers\CarrinhoController@mostrarCarrinho');
+
 

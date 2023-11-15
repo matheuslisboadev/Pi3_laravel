@@ -39,5 +39,5 @@ Route::get('/carrinho', function () {
 Route::get('/listagem', [ProdutoController::class, 'index']);
 Route::post('/adicionar-produto', [CarrinhoController::class, 'adicionarProduto'])->name('adicionar_produto');
 Route::get('/carrinho', 'App\Http\Controllers\CarrinhoController@mostrarCarrinho');
-
-
+Route::get('/homepage', [HomepageController::class, 'index']);
+Route::get('/produto/{id}', [ProdutoController::class, 'mostrarProduto'])->name('produto');

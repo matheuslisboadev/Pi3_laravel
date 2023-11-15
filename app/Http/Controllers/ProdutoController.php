@@ -7,14 +7,25 @@ use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+  
     public function index()
     {
         $produtos = Produto::all();
         return view('listagem', compact('produtos'));
     }
+
+
+    public function mostrarProduto($id)
+    {
+        $produto = Produto::find($id);
+    
+        if (!$produto) {
+            return redirect()->route('pagina_de_erro');
+        }
+    
+        return view('produto', compact('produto'));
+    }
+    
 
     /**
      * Show the form for creating a new resource.

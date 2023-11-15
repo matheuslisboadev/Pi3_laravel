@@ -13,7 +13,8 @@
     <header>
         <nav>
             <div class="logo">
-                <img src="img/Logo.png" >
+                <img src="{{ asset('img/Logo.png') }}" alt="Logo">
+
             </div>
             <ul>
                 <li><a href="#home">Home</a></li>

@@ -12,10 +12,8 @@ class CarrinhoController extends Controller
     {
         $carrinhoIds = session('carrinho', []); 
 
-        // Aqui você deve buscar os detalhes completos dos produtos usando os IDs
         $produtos = Produto::whereIn('PRODUTO_ID', array_keys($carrinhoIds))->get();
 
-        // Agora, você pode combinar as informações do produto com as quantidades
         $carrinho = [];
         foreach ($produtos as $produto) {
             $carrinho[] = [

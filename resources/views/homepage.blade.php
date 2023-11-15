@@ -13,10 +13,15 @@
         @include('layouts.sidebar')
         @yield('side')
 
-        <div class="content">
-            <div class="card-principal">
-                <h1>Jogo em destaque</h1>
-            </div>
+        <div class="card-principal">
+    <h1>Produto em destaque</h1>
+    <h2>{{ $produtoPrincipal->PRODUTO_NOME }}</h2>
+    <p>{{ $produtoPrincipal->PRODUTO_DESC }}</p>
+    <p>Preço: R$ {{ $produtoPrincipal->PRODUTO_PRECO }}</p>
+    <p>Desconto: R$ {{ $produtoPrincipal->PRODUTO_DESCONTO }}</p>
+    <a href="{{ route('produto', ['id' => $produtoPrincipal->PRODUTO_ID]) }}" class="btn">Detalhes</a>
+
+</div>
 
             <div class="card-container">
                 <div class="card">

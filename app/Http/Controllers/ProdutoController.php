@@ -26,6 +26,13 @@ class ProdutoController extends Controller
         return view('produto', compact('produto'));
     }
     
+    public function listagemPorCategoria($categoria)
+    {
+        $produtos = Produto::where('CATEGORIA_ID', $categoria)->get();
+        return view('listagem', compact('produtos'));
+    }
+    
+
 
     /**
      * Show the form for creating a new resource.

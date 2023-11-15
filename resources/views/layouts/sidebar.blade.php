@@ -7,16 +7,12 @@
     <body> 
     @yield('side')
     <div class="container">
-        <!-- Barra lateral -->
-        <div class="sidebar">
-           
-            <ul class="nav">
-                <li><a href="#">categoria 1</a></li>
-                <li><a href="#">categoria 2</a></li>
-                <li><a href="#">categoria 3</a></li>
-                <li><a href="#">categoria 4</a></li>
-                <li><a href="#">categoria 5</a></li>
-            </ul>
+        <div class="sidebar">           
+        <ul class="nav">
+    @foreach($categorias as $categoria)
+        <li><a href="{{ route('listagem_por_categoria', ['categoria' => $categoria->CATEGORIA_ID]) }}">{{ $categoria->CATEGORIA_NOME }}</a></li>
+    @endforeach
+</ul>
         </div>
 </div>
 </body>

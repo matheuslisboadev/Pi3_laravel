@@ -41,3 +41,5 @@ Route::post('/adicionar-produto', [CarrinhoController::class, 'adicionarProduto'
 Route::get('/carrinho', 'App\Http\Controllers\CarrinhoController@mostrarCarrinho');
 Route::get('/homepage', [HomepageController::class, 'index']);
 Route::get('/produto/{id}', [ProdutoController::class, 'mostrarProduto'])->name('produto');
+Route::get('/listagem/{categoria}', [ProdutoController::class, 'listagemPorCategoria'])->name('listagem_por_categoria');
+

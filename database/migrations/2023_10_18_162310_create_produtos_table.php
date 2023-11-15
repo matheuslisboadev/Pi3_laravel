@@ -15,7 +15,7 @@ class CreateProdutosTable extends Migration
             $table->string('PRODUTO_DESC');
             $table->double('PRODUTO_PRECO');
             $table->double('PRODUTO_DESCONTO');
-            $table->integer('CATEGORIA_ID');
+            $table->foreignId('CATEGORIA_ID')->constrained('categorias');
             $table->integer('PRODUTO_ATIVO');
         });
     }

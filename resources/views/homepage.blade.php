@@ -23,28 +23,16 @@
 
 </div>
 
-            <div class="card-container">
-                <div class="card">
-                    <h2>Card 1</h2>
-                    <p></p>
-                    <p></p>
-                    <a href="#" class="btn">ok</a>
-                </div>
-
-                <div class="card">
-                    <h2>Card 2</h2>
-                    <p></p>
-                    <p></p>
-                    <a href="#" class="btn">ok</a>
-                </div>
-
-                <div class="card">
-                    <h2>Card 3</h2>
-                    <p></p>
-                    <p></p>
-                    <a href="#" class="btn">ok</a>
-                </div>
-            </div>
+<div class="card-container">
+    @foreach($outrosProdutos as $outroProduto)
+        <div class="card">
+            <h2>{{ $outroProduto->PRODUTO_NOME }}</h2>
+            <p>{{ $outroProduto->PRODUTO_DESC }}</p>
+            <p>Preço: R$ {{ $outroProduto->PRODUTO_PRECO }}</p>
+            <p>Desconto: R$ {{ $outroProduto->PRODUTO_DESCONTO }}</p>
+            <a href="{{ route('produto', ['id' => $outroProduto->PRODUTO_ID]) }}" class="btn">Detalhes</a>
+        </div>
+    @endforeach
         </div>
     </div>
 

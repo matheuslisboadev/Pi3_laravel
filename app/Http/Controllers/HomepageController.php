@@ -17,6 +17,12 @@ class HomepageController extends Controller
 
         $produtoPrincipal = $produtos->random();
 
-        return view('homepage', compact('produtoPrincipal', 'categorias'));
+        $outrosProdutos = $produtos->filter(function ($produto) use ($produtoPrincipal) {
+            return $produto->PRODUTO_ID !== $produtoPrincipal->PRODUTO_ID;
+        });
+
+        $outrosProdutos = $outrosProdutos->shuffle()->take(3);
+
+        return view('homepage', compact('produtoPrincipal', 'categorias', 'outrosProdutos'));
     }
 }

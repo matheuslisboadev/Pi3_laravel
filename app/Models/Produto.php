@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\estoque;
+
 
 class Produto extends Model
 {
@@ -22,6 +24,11 @@ class Produto extends Model
     public function categoria()
     {
         return $this->belongsTo(Categoria::class, 'CATEGORIA_ID');
+    }
+
+    public function estoque()
+    {
+        return $this->hasOne(estoque::class, 'PRODUTO_ID');
     }
  
     public $timestamps = true;

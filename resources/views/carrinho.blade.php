@@ -61,69 +61,91 @@
                         <span id="total">Total</span>
                     </footer>
                 </div>
-                <button>Finalizar Compra</button>
+                <button class="finalizar-compra">Finalizar Compra</button>
             </aside>
         </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-    $(document).ready(function () {
-        $('.increment').click(function () {
-            var index = $(this).closest('tr').index();
-            incrementarQuantidade(index);
-        });
+   $(document).ready(function () {
+    $('.increment').click(function () {
+        var index = $(this).closest('tr').index();
+        incrementarQuantidade(index);
+    });
 
-        $('.decrement').click(function () {
-            var index = $(this).closest('tr').index();
-            decrementarQuantidade(index);
-        });
+    $('.decrement').click(function () {
+        var index = $(this).closest('tr').index();
+        decrementarQuantidade(index);
+    });
 
-        $('.remove-produto').click(function () {
-            var index = $(this).closest('tr').index();
-            removerProduto(index);
-        });
+    $('.remove-produto').click(function () {
+        var index = $(this).closest('tr').index();
+        removerProduto(index);
+    });
 
-        function incrementarQuantidade(index) {
-            var quantidadeElement = $('.qty').eq(index).find('.quantidade');
-            var quantidadeAtual = parseInt(quantidadeElement.text());
-            quantidadeAtual++;
+    $('button.finalizar-compra').click(function () {
+        console.log('Botão de finalizar compra clicado');
+        finalizarCompra();
+    });
+
+    function incrementarQuantidade(index) {
+        var quantidadeElement = $('.qty').eq(index).find('.quantidade');
+        var quantidadeAtual = parseInt(quantidadeElement.text());
+        quantidadeAtual++;
+        quantidadeElement.text(quantidadeAtual);
+
+        atualizarSubtotal(index, quantidadeAtual);
+        atualizarTotal();
+    }
+
+    function decrementarQuantidade(index) {
+        var quantidadeElement = $('.qty').eq(index).find('.quantidade');
+        var quantidadeAtual = parseInt(quantidadeElement.text());
+        if (quantidadeAtual > 1) {
+            quantidadeAtual--;
             quantidadeElement.text(quantidadeAtual);
 
             atualizarSubtotal(index, quantidadeAtual);
             atualizarTotal();
         }
+    }
 
-        function decrementarQuantidade(index) {
-            var quantidadeElement = $('.qty').eq(index).find('.quantidade');
-            var quantidadeAtual = parseInt(quantidadeElement.text());
-            if (quantidadeAtual > 1) {
-                quantidadeAtual--;
-                quantidadeElement.text(quantidadeAtual);
+    function removerProduto(index) {
+        $('.qty').eq(index).closest('tr').remove();
+        atualizarTotal();
+    }
 
-                atualizarSubtotal(index, quantidadeAtual);
-                atualizarTotal();
+    function atualizarSubtotal(index, quantidade) {
+        var precoUnitario = parseFloat($('.qty').eq(index).prev().text().replace('R$ ', '').replace(',', '.'));
+        var subtotal = quantidade * precoUnitario;
+        $('.subtotal').eq(index).text('R$ ' + subtotal.toFixed(2).replace('.', ','));
+    }
+
+    function atualizarTotal() {
+        var total = 0;
+        $('.subtotal').each(function () {
+            total += parseFloat($(this).text().replace('R$ ', '').replace(',', '.'));
+        });
+        $('#total').text('Total: R$ ' + total.toFixed(2).replace('.', ','));
+    }
+
+    function finalizarCompra() {
+        $.ajax({
+            type: 'POST',
+            url: '{{ route("finalizar_compra") }}',
+            data: { produtos: @json($carrinho) },
+            success: function(response) {
+                console.log('Resposta do servidor:', response);
+                alert('Compra finalizada com sucesso!');
+                location.reload(); 
+            },
+            error: function(error) {
+                console.log('Erro ao finalizar a compra:', error);
+                alert('Erro ao finalizar a compra');
             }
-        }
-
-        function removerProduto(index) {
-            $('.qty').eq(index).closest('tr').remove();
-            atualizarTotal();
-        }
-
-        function atualizarSubtotal(index, quantidade) {
-            var precoUnitario = parseFloat($('.qty').eq(index).prev().text().replace('R$ ', '').replace(',', '.'));
-            var subtotal = quantidade * precoUnitario;
-            $('.subtotal').eq(index).text('R$ ' + subtotal.toFixed(2).replace('.', ','));
-        }
-
-        function atualizarTotal() {
-            var total = 0;
-            $('.subtotal').each(function () {
-                total += parseFloat($(this).text().replace('R$ ', '').replace(',', '.'));
-            });
-            $('#total').text('Total: R$ ' + total.toFixed(2).replace('.', ','));
-        }
-    });
+        });
+    }
+});
 </script>
 
 </body>

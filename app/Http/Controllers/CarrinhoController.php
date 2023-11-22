@@ -36,4 +36,31 @@ class CarrinhoController extends Controller
     
         return redirect('/carrinho');
     }
+
+    public function finalizarCompra(Request $request)
+{
+    try {
+        DB::beginTransaction();
+
+        foreach ($request->produtos as $produto) {
+            $produtoId = $produto['produto']->PRODUTO_ID;
+            $quantidade = $produto['quantidade'];
+
+            DB::table('PRODUTO_ESTOQUE')->where('PRODUTO_ID', $produtoId)->decrement('PRODUTO_QTD', $quantidade);
+
+            Pedido::create([
+                'produto_id' => $produtoId,
+                'quantidade' => $quantidade,
+            ]);
+        }
+
+
+        DB::commit();
+
+        return response()->json(['success' => true]);
+    } catch (\Exception $e) {
+        DB::rollback();
+        return response()->json(['success' => false, 'error' => $e->getMessage()]);
+    }
+}
 }

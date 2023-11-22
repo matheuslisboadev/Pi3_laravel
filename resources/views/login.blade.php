@@ -10,18 +10,20 @@
     <img src="img/Logo.png">
     <div class="form">
             <h1 class="login">Login</h1>
+            <form method="post" action="{{ route('login') }}">
+    @csrf
+    <div class="email">
+        <input type="text" name="USUARIO_EMAIL" placeholder="Digite seu e-mail">
+    </div>
 
-        <div class="email">
-            <input type="text" placeholder="Digite seu e-mail">
-        </div>
+    <div class="senha">
+        <input type="password" name="USUARIO_SENHA" placeholder="Digite sua senha">
+    </div>
 
-        <div class="senha">
-            <input type="password" placeholder="Digite sua senha">
-        </div>
-
-        <div class="botao">
-            <button type="submit">Entrar</button>
-        </div>
+    <div class="botao">
+        <button type="submit">Entrar</button>
+    </div>
+</form>
         <div class="lembrar">
             <label class="lembrar">Lembrar usuario</label>
             <input type="checkbox">
